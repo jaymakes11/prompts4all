@@ -1,0 +1,48 @@
+---
+import Root from '@layouts/Root.astro'
+import { getCollection } from 'astro:content'
+import { wrapLinesInPTags } from '@src/utils.ts'
+import CopyBtn from '@components/CopyBtn.svelte'
+
+export async function getStaticPaths() {
+	const prompts = await getCollection('prompt')
+	return prompts.map((prompt) => ({
+		params: { promptSlug: prompt.slug },
+		props: { prompt },
+	}))
+}
+
+const { prompt } = Astro.props
+---
+
+<Root
+	classes="px-3 sm:px-6"
+	title={`A prompt for ${prompt.data.intendedFor}: ${prompt.name}`}
+	description={`View this prompt for ${prompt.data.intendedFor}. Explore more prompts from our 100% free and growing collection of AI prompts.`}
+>
+	<div class="text-center mb-16 mt-12">
+		<h1 class="mb-6">{prompt.data.title}</h1>
+		<h2 class="text-gray-600">Intended for {prompt.data.intendedFor}</h2>
+	</div>
+	<div class="max-w-[700px] mx-auto w-full">
+		<div class="border-2 border-gray-300 border-dashed p-6 mb-3">
+			<div class="prose">
+				<Fragment set:html={wrapLinesInPTags(prompt.data.prompt)} />
+			</div>
+		</div>
+		<div class="text-right">
+			<CopyBtn
+				client:load
+				text={prompt.data.prompt}
+				classes="border px-3 py-1.5 rounded hover:ring-1 hover:text-gray-800"
+			/>
+		</div>
+		<div class="text-sm">
+			<a
+				class="defaultTextLink"
+				href={prompt.data.source}
+				>Source</a
+			>
+		</div>
+	</div>
+</Root>

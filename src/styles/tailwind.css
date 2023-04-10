@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+	body {
+		@apply selection:bg-blue-100 selection:text-gray-900;
+	}
+
+	h1 {
+		@apply font-[800] text-gray-800 text-5xl sm:text-6xl;
+	}
+
+	.prose a,
+	.defaultTextLink {
+		color: inherit;
+		@apply border-b border-dashed border-blue-700 no-underline;
+	}
+	.prose a:hover,
+	.defaultTextLink:hover,
+	.prose a:active,
+	.defaultTextLink:active {
+		@apply border-solid text-gray-900;
+	}
+}

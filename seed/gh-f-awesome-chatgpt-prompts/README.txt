@@ -1,0 +1,1 @@
+Seed CSV and Node script for generating content files from https://github.com/f/awesome-chatgpt-prompts.

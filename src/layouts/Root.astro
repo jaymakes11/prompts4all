@@ -1,0 +1,104 @@
+---
+export interface Props {
+	title?: string
+	description?: string
+	classes?: string
+}
+
+const { title, description = 'A 100% free and growing collection of AI prompts.', classes = '' } = Astro.props
+
+import '@styles/tailwind.css'
+
+import EmailSignupForm from '@components/EmailSignupForm.svelte'
+---
+
+<!DOCTYPE html>
+<html
+	lang="en"
+	class="font-inter"
+>
+	<head>
+		<meta charset="utf-8" />
+		<meta
+			name="viewport"
+			content="width=device-width"
+		/>
+		<link
+			rel="canonical"
+			href={`https://www.prompts4all.com${Astro.url.pathname === '/' ? '' : Astro.url.pathname}`}
+		/>
+		<title>
+			{title ? `${title} - Prompts4All` : 'Prompts4All'}
+		</title>
+		<meta
+			name="description"
+			content={description}
+		/>
+		<title>Prompts4All</title>
+		<script
+			defer
+			data-domain="promptsforall.com"
+			data-api="/pb-jam/all-the-pb/event"
+			src="/pb-jam/all-the-pb/script.js"
+		></script>
+	</head>
+	<body>
+		<header>
+			<div class="text-center mb-16 mt-12">
+				<a
+					href="/"
+					class="font-mono text-2xl text-gray-600 flex justify-center"
+				>
+					<span>&lcub;</span>
+					<span class="mx-1.5">Prompts4All</span>
+					<span>&rcub;</span>
+				</a>
+			</div>
+		</header>
+		<div class={classes}>
+			<slot />
+		</div>
+		<footer class="pt-32 max-w-[1200px] mx-auto">
+			<section class="dashedTopBg py-32">
+				<EmailSignupForm client:only />
+			</section>
+			<section class="dashedTopBg py-32">
+				<div class="text-center mb-6">
+					<a
+						href="/"
+						class="font-mono text-sm text-gray-600 inline-flex justify-center"
+					>
+						<span>&lcub;</span>
+						<span class="mx-1.5">Prompts4All</span>
+						<span>&rcub;</span>
+					</a>
+				</div>
+				<div class="text-center prose prose-sm mx-auto prose-p:text-gray-500">
+					<p>
+						A free and open-source project by <a
+							href="https://twitter.com/jaymakes11"
+							class="defaultTextLink"
+							>@jaymakes11</a
+						>.
+					</p>
+					<p>
+						Interested in adding a prompt or feature? <a
+							href="https://github.com/"
+							class="defaultTextLink"
+							>Please contribute</a
+						>!
+					</p>
+				</div>
+			</section>
+		</footer>
+	</body>
+</html>
+
+<style is:global>
+	.dashedTopBg {
+		background-image: linear-gradient(to right, rgb(34, 34, 34) 0 10%, rgba(255, 255, 255, 0) 10%);
+		background-position: top;
+		background-size: 8px 1px;
+		background-repeat: repeat-x;
+	}
+</style>
