@@ -6,3 +6,4 @@
 
 - [ ] Add contribution guidelines
 - [ ] Add contribution templates
+- [ ] Add tags
