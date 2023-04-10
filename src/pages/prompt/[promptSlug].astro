@@ -21,7 +21,7 @@ const { prompt } = Astro.props
 	title={`A prompt for ${prompt.data.intendedFor}: ${prompt.data.title}`}
 	description={`View this prompt for ${prompt.data.intendedFor}. Explore more prompts from our 100% free and growing collection of AI prompts.`}
 >
-	<div class="text-center mb-16 mt-12">
+	<div class="text-center mb-16 mt-12 max-w-[1020px] mx-auto">
 		<h1 class="mb-6">{prompt.data.title}</h1>
 		<h2 class="text-gray-600">Intended for {prompt.data.intendedFor}</h2>
 	</div>
