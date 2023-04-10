@@ -1,9 +1,9 @@
-const saveEmailToAirtable = async (emailToSave, requestFromUrl) => {
+const saveEmailToAirtable = async (env, emailToSave, requestFromUrl) => {
 	// Note: The airtable JS client doesn't yet work in the context of workers. Using their API directly for now.
 
 	return fetch('https://api.airtable.com/v0/app7TfK3zvx0U6D3V/emails', {
 		headers: {
-			Authorization: `Bearer ${AIRTABLE_API_KEY}`,
+			Authorization: `Bearer ${env.AIRTABLE_API_KEY}`,
 			'Content-Type': 'application/json',
 		},
 		method: 'POST',
@@ -20,7 +20,7 @@ const saveEmailToAirtable = async (emailToSave, requestFromUrl) => {
 	})
 }
 
-export async function onRequestPost({ request }) {
+export async function onRequestPost({ request, env }) {
 	try {
 		const { searchParams } = new URL(request.url)
 		const email = searchParams.get('email')
@@ -38,7 +38,7 @@ export async function onRequestPost({ request }) {
 			requestFromUrl = refererUrl.toString()
 		}
 
-		await saveEmailToAirtable(email, requestFromUrl)
+		await saveEmailToAirtable(env, email, requestFromUrl)
 
 		return new Response(
 			JSON.stringify({ status: 'success', message: `Successfully added the email ${email}` }),
