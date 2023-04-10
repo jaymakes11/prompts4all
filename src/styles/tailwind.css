@@ -2,6 +2,27 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+	font-family: 'InterVar';
+	font-weight: 100 900;
+	font-display: swap;
+	font-style: normal;
+	src: url('/fonts/Inter-var-beta8.woff2?v=3.19') format('woff2-variations'),
+		url('/fonts/Inter-var-beta8.woff2?v=3.19') format('woff2');
+	src: url('/fonts/Inter-var-beta8.woff2?v=3.19') format('woff2') tech('variations');
+}
+/* TODO: Add italic support */
+/* @font-face {
+	font-family: "InterVar";
+	font-weight: 100 900;
+	font-display: swap;
+	font-style: italic;
+	src: url("Inter-Italic.var.woff2?v=3.19") format("woff2-variations"),
+		  url("Inter-Italic.var.woff2?v=3.19") format("woff2");
+	src: url("Inter-Italic.var.woff2?v=3.19") format("woff2") tech("variations");
+ }
+  */
+
 @layer utilities {
 	body {
 		@apply selection:bg-blue-100 selection:text-gray-900;

@@ -19,7 +19,7 @@ const prompts = await getCollection('prompt')
 						class="border p-6 hover:ring-1"
 						rel="prefetch"
 					>
-						<div class="prose prose-sm prose-headings:font-[700]">
+						<div class="prose prose-headings:font-[700]">
 							<h3>{prompt.data.title}</h3>
 							<div>
 								<Fragment set:html={wrapLinesInPTags(prompt.data.prompt)} />
