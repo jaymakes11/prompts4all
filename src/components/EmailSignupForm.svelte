@@ -1,5 +1,5 @@
 <script>
-	const storageKeyHideEmailWidget = 'bb-hideEmailSignupWidget'
+	const storageKeyHideEmailWidget = 'prompts4all-hideEmailSignupWidget'
 
 	let isLoading
 	let emailInput = ''
