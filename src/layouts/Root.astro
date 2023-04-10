@@ -16,6 +16,7 @@ import EmailSignupForm from '@components/EmailSignupForm.svelte'
 
 <!DOCTYPE html>
 <html lang="en">
+	<!-- prettier-ignore -->
 	<head>
 		<script is:inline define:vars={{themeStorageKey, darkThemeClass}}>
 			!(function () {
@@ -37,7 +38,6 @@ import EmailSignupForm from '@components/EmailSignupForm.svelte'
 				window.localStorage.setItem(themeStorageKey, themeValue)
 			})()
 		</script>
-		<!-- prettier-ignore -->
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="canonical" href={`https://www.prompts4all.com${Astro.url.pathname === '/' ? '' : Astro.url.pathname}`} />
@@ -92,7 +92,7 @@ import EmailSignupForm from '@components/EmailSignupForm.svelte'
 					</p>
 					<p>
 						Interested in adding a prompt or feature? <a
-							href="https://github.com/"
+							href="https://github.com/jaymakes11/prompts4all"
 							class="defaultTextLink"
 							>Please contribute</a
 						>!
