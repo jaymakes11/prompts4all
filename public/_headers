@@ -1,0 +1,37 @@
+# https://developers.cloudflare.com/pages/platform/headers/#prevent-your-pagesdev-deployments-showing-in-search-results
+https://:prompts4all.pages.dev/*
+   x-robots-tag: noindex
+
+/*
+   # Basic security headers
+   # x-xss-protection: 1; mode=block
+   # x-content-type-options: nosniff # disabling to try to get Plausible proxy working
+
+   # Cache everything by default for 1 minute. In combination with prefetching (which we're
+   # doing via Astros "prefetch" package for any links with `rel="prefetch"`)
+   # this helps make navigation fast.
+   # We would do this just for HTML pages, but this doesn't seem possible
+   cache-control: public, max-age=60, must-revalidate
+   # Preload some assets
+   # Note: For this to work, "Early Hints" has to be manually enabled in the Cloudflare dashboard (in speed/optimiztions)
+   # Link: </styles.css>; rel=preload; as=style
+   # Link: </fonts/crimson-pro-v13-latin-regular.woff2>; rel=preload; as=font; type="font/woff2"
+   # Link: </fonts/rosario-v18-latin-300.woff2>; rel=preload; as=font; type="font/woff2"
+
+# IMPORTANT: Make sure any file with long-expirary headers has a version hash!!!
+
+/_astro/*
+   ! cache-control
+   cache-control: public, max-age=31536000, immutable
+   
+/fonts/*.woff
+   ! cache-control
+   cache-control: public, max-age=31536000, immutable
+/fonts/*.woff2
+   ! cache-control
+   cache-control: public, max-age=31536000, immutable
+
+# Without this the site doesn't load (!?)
+/index.html
+   ! cache-control
+   cache-control: no-cache
