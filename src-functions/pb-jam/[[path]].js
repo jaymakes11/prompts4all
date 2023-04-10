@@ -1,5 +1,5 @@
-const ScriptName = '/pb-jam/script.js'
-const Endpoint = '/pb-jam/event'
+const ScriptName = '/all-the-pb/script.js'
+const Endpoint = '/all-the-pb/event'
 
 const ScriptWithoutExtension = ScriptName.replace('.js', '')
 
