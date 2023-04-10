@@ -4,12 +4,15 @@ import svelte from '@astrojs/svelte'
 import prefetch from '@astrojs/prefetch'
 import sitemap from '@astrojs/sitemap'
 import compress from 'astro-compress'
+import cloudflare from '@astrojs/cloudflare'
 
 // For options and such, see https://astro.build/config
 
 export default defineConfig({
 	site: 'https://www.prompts4all.com',
 	trailingSlash: 'always',
+	output: 'server',
+	adapter: cloudflare({ mode: 'directory' }),
 	integrations: [
 		tailwind({
 			config: {

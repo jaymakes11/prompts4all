@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "include": [
+    "/api/*",
+    "/pb-jam/*"
+  ],
+  "exclude": [
+    "/index.html",
+    "/*.xml",
+    "/*.png",
+    "/*.ico",
+    "/*.txt",
+    "/*.webmanifest",
+    "/_astro/*",
+    "/about/*",
+    "/fonts/*",
+    "/images/*",
+    "/prompt/*"
+  ]
+}

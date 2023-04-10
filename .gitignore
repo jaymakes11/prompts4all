@@ -22,6 +22,6 @@ pnpm-debug.log*
 
 # Astro is putting this in the top-level functions dir instead of in output. 
 # We handle copying it to the output as part of the build.
-src-functions/\[\[path\]\].js
+functions/\[\[path\]\].js
 
 .wrangler

@@ -3,7 +3,7 @@
 	"type": "module",
 	"version": "0.0.1",
 	"scripts": {
-		"_esbuild:functions": "esbuild src-functions/api/*.js src-functions/pb-jam/*.js --outdir=dist/functions --minify",
+		"_esbuild:functions": "esbuild functions/*.js functions/api/*.js functions/pb-jam/*.js --outdir=dist/functions --minify",
 		"apiDevelop": "wrangler pages dev . --port=3001 --persist --local --compatibility-date=2023-04-10",
 		"develop": "astro dev",
 		"astroBuild": "astro build",
@@ -13,12 +13,13 @@
 		"deploy": "wrangler pages publish dist --project-name=prompts4all --branch=main"
 	},
 	"devDependencies": {
-		"astro": "^2.2.1",
+		"@astrojs/cloudflare": "^6.2.2",
 		"@astrojs/prefetch": "^0.2.1",
 		"@astrojs/sitemap": "^1.2.2",
 		"@astrojs/svelte": "^2.1.0",
 		"@astrojs/tailwind": "^3.1.1",
 		"@tailwindcss/typography": "^0.5.9",
+		"astro": "^2.2.1",
 		"astro-compress": "^1.1.35",
 		"csv-parser": "^3.0.0",
 		"esbuild": "^0.17.16",
