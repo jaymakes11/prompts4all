@@ -9,69 +9,54 @@ const { title, description = 'A 100% free and growing collection of AI prompts.'
 
 import '@styles/tailwind.css'
 
+import ColorThemeToggle from '@components/ColorThemeToggle.svelte'
+import { themeStorageKey, darkThemeClass } from '@src/constants'
 import EmailSignupForm from '@components/EmailSignupForm.svelte'
 ---
 
 <!DOCTYPE html>
-<html
-	lang="en"
-	class="font-inter"
->
+<html lang="en">
 	<head>
+		<script is:inline define:vars={{themeStorageKey, darkThemeClass}}>
+			!(function () {
+				const themeValue = (() => {
+					if (localStorage && localStorage.getItem(themeStorageKey)) {
+						return localStorage.getItem(themeStorageKey)
+					} else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+						return 'dark'
+					} else {
+						return 'light'
+					}
+				})()
+
+				if (themeValue === 'light') {
+					document.documentElement.classList.remove(darkThemeClass)
+				} else {
+					document.documentElement.classList.add(darkThemeClass)
+				}
+				window.localStorage.setItem(themeStorageKey, themeValue)
+			})()
+		</script>
+		<!-- prettier-ignore -->
 		<meta charset="utf-8" />
-		<meta
-			name="viewport"
-			content="width=device-width"
-		/>
-		<link
-			rel="canonical"
-			href={`https://www.prompts4all.com${Astro.url.pathname === '/' ? '' : Astro.url.pathname}`}
-		/>
-		<title>
-			{title ? `${title} - Prompts4All` : 'Prompts4All'}
-		</title>
-		<link
-			rel="apple-touch-icon"
-			sizes="180x180"
-			href="/apple-touch-icon.png"
-		/>
-		<link
-			rel="icon"
-			type="image/png"
-			sizes="32x32"
-			href="/favicon-32x32.png"
-		/>
-		<link
-			rel="icon"
-			type="image/png"
-			sizes="16x16"
-			href="/favicon-16x16.png"
-		/>
-		<link
-			rel="manifest"
-			href="/site.webmanifest"
-		/>
-		<meta
-			name="description"
-			content={description}
-		/>
-		<link
-			rel="sitemap"
-			href="/sitemap-index.xml"
-		/>
-		<script
-			defer
-			data-domain="prompts4all.com"
-			data-api="/pb-jam/all-the-pb/event"
-			src="/pb-jam/all-the-pb/script.js"
-		></script>
+		<meta name="viewport" content="width=device-width" />
+		<link rel="canonical" href={`https://www.prompts4all.com${Astro.url.pathname === '/' ? '' : Astro.url.pathname}`} />
+		<title> {title ? `${title} - Prompts4All` : 'Prompts4All'} </title>
+		<meta name="description" content={description} />
+		<link rel="sitemap" href="/sitemap-index.xml" />
+		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+		<link rel="manifest" href="/site.webmanifest" />
+		<script defer data-domain="prompts4all.com" data-api="/pb-jam/all-the-pb/event" src="/pb-jam/all-the-pb/script.js" ></script>
 	</head>
-	<body>
+	<body class="bg-white dark:bg-gray-900">
+		<ColorThemeToggle client:load />
 		<header>
 			<div class="text-center mb-16 mt-12">
 				<a
 					href="/"
-					class="font-mono text-2xl text-gray-600 flex justify-center"
+					class="font-mono text-2xl text-gray-600 hover:text-gray-950 dark:text-gray-200 dark:hover:text-white inline-flex justify-center"
 				>
 					<span>&lcub;</span>
 					<span class="mx-1.5">Prompts4All</span>
@@ -90,14 +75,14 @@ import EmailSignupForm from '@components/EmailSignupForm.svelte'
 				<div class="text-center mb-6">
 					<a
 						href="/"
-						class="font-mono text-sm text-gray-600 inline-flex justify-center"
+						class="font-mono text-sm text-gray-600 hover:text-gray-950 dark:text-gray-200 dark:hover:text-white inline-flex justify-center"
 					>
 						<span>&lcub;</span>
 						<span class="mx-1.5">Prompts4All</span>
 						<span>&rcub;</span>
 					</a>
 				</div>
-				<div class="text-center prose prose-sm mx-auto prose-p:text-gray-500">
+				<div class="text-center prose prose-sm mx-auto prose-p:text-gray-500 dark:prose-p:text-gray-200">
 					<p>
 						A free and open-source project by <a
 							href="https://twitter.com/jaymakes11"
@@ -124,5 +109,8 @@ import EmailSignupForm from '@components/EmailSignupForm.svelte'
 		background-position: top;
 		background-size: 8px 1px;
 		background-repeat: repeat-x;
+	}
+	.dark .dashedTopBg {
+		background-image: linear-gradient(to right, rgb(255, 255, 255) 0 10%, rgba(246, 246, 246, 0) 10%);
 	}
 </style>

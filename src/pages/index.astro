@@ -8,7 +8,7 @@ const prompts = await getCollection('prompt')
 ---
 
 <Root classes="px-3 sm:px-6">
-	<div class="mb-24 text-center font-extrabold text-3xl text-gray-800">
+	<div class="mb-24 text-center font-extrabold text-3xl text-gray-800 dark:text-gray-200">
 		A 100% free and growing collection of AI prompts.
 	</div>
 	<div class="max-w-[1200px] mx-auto">
@@ -17,10 +17,10 @@ const prompts = await getCollection('prompt')
 				prompts.map((prompt) => (
 					<a
 						href={`/prompt/${prompt.slug}/`}
-						class="border p-6 hover:ring-1"
+						class="bg-gray-100/70 dark:bg-gray-800 p-6 hover:ring-1 hover:ring-blue-500 dark:hover:ring-blue-300"
 						rel="prefetch"
 					>
-						<div class="prose prose-headings:font-[700]">
+						<div class="prose dark:prose-invert">
 							<h3 class="leading-tight">{prompt.data.title}</h3>
 							<div>
 								<Fragment set:html={wrapLinesInPTags(prompt.data.prompt)} />

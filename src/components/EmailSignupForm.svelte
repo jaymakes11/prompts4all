@@ -29,7 +29,7 @@
 </script>
 
 <div
-	class="relative max-w-[700px] mx-auto prose sm:prose-lg text-center prose-headings:font-bold prose-p:text-gray-500 overflow-hidden"
+	class="relative max-w-[700px] mx-auto prose sm:prose-lg dark:prose-invert text-center prose-headings:font-bold prose-p:text-gray-500 dark:prose-p:text-gray-100"
 >
 	{#if showErrorMessage}
 		<h3>That didn't work 😟</h3>
@@ -45,8 +45,8 @@
 	{:else}
 		<h3 class="block">
 			<span class="block text-2xl mb-3">Want to know when we add new prompts?</span>
-			<span class="block text-xl text-gray-500 font-sans font-normal mb-12">
-				(then join our email list, it's free)
+			<span class="block text-xl text-gray-500 dark:text-gray-300 font-sans font-normal mb-12">
+				( join our email list, it's free )
 			</span>
 		</h3>
 		<form
@@ -56,18 +56,19 @@
 			<input
 				type="email"
 				bind:value={emailInput}
-				class="max-w-[500px] w-full rounded px-4 py-2 placeholder:text-gray-400 border mr-3"
+				class="max-w-[500px] w-full rounded px-4 py-2 placeholder:text-gray-400 border mr-3 dark:bg-gray-800 dark:border-none focus:outline-none focus:ring-1 dark:focus:ring-blue-500"
 				placeholder="your-email@domain.com"
 				required
 			/>
 			<button
 				type="submit"
-				class="bg-blue-200 px-10 py-3 rounded shadow hover:shadow-lg">Send</button
+				class="bg-blue-200 hover:bg-blue-300 focus:bg-blue-300 dark:bg-blue-700 px-10 py-3 rounded dark:focus:ring-0 focus:outline-none dark:hover:bg-blue-600 dark:focus:bg-blue-600"
+				>Send</button
 			>
 		</form>
 	{/if}
 	{#if isLoading}
-		<div class="absolute flex inset-0 bg-blue-50/80 flex-col justify-center">
+		<div class="absolute flex inset-0 bg-white/80 dark:bg-gray-800/80 flex-col justify-center">
 			<!-- src: https://icons.getbootstrap.com/icons/gear/ -->
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
