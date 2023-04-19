@@ -2,7 +2,7 @@
 export const prerender = true
 import Root from '@layouts/Root.astro'
 import { getCollection } from 'astro:content'
-import { wrapLinesInPTags } from '@src/utils.ts'
+import { mdToHtml } from '@src/utils.ts'
 import CopyBtn from '@components/CopyBtn.svelte'
 import { categories } from '@src/constants.ts'
 
@@ -35,7 +35,7 @@ const category = categories.find((i) => i.slug === prompt.data.category)
 	<div class="max-w-[700px] mx-auto w-full">
 		<div class="bg-gray-100/70 dark:bg-gray-800 p-6 mb-3">
 			<div class="prose prose-xl dark:prose-invert">
-				<Fragment set:html={wrapLinesInPTags(prompt.data.prompt)} />
+				<Fragment set:html={mdToHtml(prompt.data.prompt)} />
 			</div>
 		</div>
 		<div class="flex justify-between">

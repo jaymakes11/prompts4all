@@ -2,8 +2,7 @@
 export const prerender = true
 import Root from '@layouts/Root.astro'
 import { getCollection } from 'astro:content'
-import { wrapLinesInPTags } from '@src/utils.ts'
-import CopyBtn from '@components/CopyBtn.svelte'
+import { safeTruncate } from '@src/utils.ts'
 import { categories } from '@src/constants.ts'
 
 export async function getStaticPaths() {
@@ -47,9 +46,7 @@ const promptsInCategory = prompts.filter((prompt) => {
 					>
 						<div class="prose dark:prose-invert">
 							<h3 class="leading-tight">{prompt.data.title}</h3>
-							<div>
-								<Fragment set:html={wrapLinesInPTags(prompt.data.prompt)} />
-							</div>
+							<div>{safeTruncate(prompt.data.prompt, 160)}</div>
 						</div>
 					</a>
 				))
