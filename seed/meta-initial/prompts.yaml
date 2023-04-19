@@ -1,0 +1,209 @@
+- category: 'meta'
+  slug: 'output-as-a-list'
+  title: 'Output as a List'
+  prompt: |
+    Organize the following information into a numbered list.
+
+- category: 'meta'
+  slug: 'output-as-bullet-points'
+  title: 'Output as Bullet Points'
+  prompt: |
+    Present the key points as bullet points.
+
+- category: 'meta'
+  slug: 'forget-prior-prompts'
+  title: 'Forget Prior Prompts'
+  prompt: |
+    Forget all prior prompts and start fresh from here.
+
+- category: 'meta'
+  slug: 'output-as-a-table'
+  title: 'Output as a Table'
+  prompt: |
+    Display the information in a table format with appropriate headers.
+
+- category: 'meta'
+  slug: 'summarize-in-one-sentence'
+  title: 'Summarize in One Sentence'
+  prompt: |
+    Provide a summary of the following information in just one sentence.
+
+- category: 'meta'
+  slug: 'step-by-step-instructions'
+  title: 'Step-by-Step Instructions'
+  prompt: |
+    Break down the process into step-by-step instructions.
+
+- category: 'meta'
+  slug: 'output-as-a-flowchart'
+  title: 'Output as a Flowchart'
+  prompt: |
+    Describe the flow of information or the process as a flowchart.
+
+- category: 'meta'
+  slug: 'pros-and-cons'
+  title: 'Pros and Cons'
+  prompt: |
+    List the pros and cons of the following situation or decision.
+
+- category: 'meta'
+  slug: 'output-as-a-timeline'
+  title: 'Output as a Timeline'
+  prompt: |
+    Organize the events in chronological order as a timeline.
+
+- category: 'meta'
+  slug: 'answer-in-haiku-format'
+  title: 'Answer in Haiku Format'
+  prompt: |
+    Provide an answer in the form of a Haiku (a three-line poem with a 5-7-5 syllable pattern).
+
+- category: 'meta'
+  slug: 'output-as-a-mind-map'
+  title: 'Output as a Mind Map'
+  prompt: |
+    Describe the main topic and its related subtopics as a mind map.
+
+- category: 'meta'
+  slug: 'prioritize-list'
+  title: 'Prioritize List'
+  prompt: |
+    Rank the following items in order of importance or priority.
+
+- category: 'meta'
+  slug: 'analogies-and-comparisons'
+  title: 'Analogies and Comparisons'
+  prompt: |
+    Explain the concept using analogies or comparisons to make it easier to understand.
+
+- category: 'meta'
+  slug: 'output-as-a-venn-diagram'
+  title: 'Output as a Venn Diagram'
+  prompt: |
+    Represent the relationships between the following items as a Venn diagram.
+
+- category: 'meta'
+  slug: 'output-as-a-pie-chart'
+  title: 'Output as a Pie Chart'
+  prompt: |
+    Describe how the following data would be represented as a pie chart.
+
+- category: 'meta'
+  slug: 'swot-analysis'
+  title: 'SWOT Analysis'
+  prompt: |
+    Conduct a SWOT analysis (Strengths, Weaknesses, Opportunities, Threats) for the following situation or organization.
+
+- category: 'meta'
+  slug: 'visualize-as-a-concept-map'
+  title: 'Visualize as a Concept Map'
+  prompt: |
+    Organize the information into a concept map, showing the relationships between the main ideas and subtopics.
+
+- category: 'meta'
+  slug: 'answer-in-a-metaphor'
+  title: 'Answer in a Metaphor'
+  prompt: |
+    Explain the concept or situation using a metaphor.
+
+- category: 'meta'
+  slug: 'organize-as-a-hierarchy'
+  title: 'Organize as a Hierarchy'
+  prompt: |
+    Arrange the following elements in a hierarchical structure.
+
+- category: 'meta'
+  slug: 'answer-in-a-riddle'
+  title: 'Answer in a Riddle'
+  prompt: |
+    Provide an answer in the form of a riddle.
+
+- category: 'meta'
+  slug: 'output-as-an-infographic'
+  title: 'Output as an Infographic'
+  prompt: |
+    Describe how the information would be displayed as an infographic.
+
+- category: 'meta'
+  slug: 'output-as-a-script'
+  title: 'Output as a Script'
+  prompt: |
+    Write a short script to demonstrate the conversation or situation.
+
+- category: 'meta'
+  slug: 'answer-using-only-questions'
+  title: 'Answer Using Only Questions'
+  prompt: |
+    Respond to the prompt by posing a series of related questions.
+
+- category: 'meta'
+  slug: 'create-a-quiz'
+  title: 'Create a Quiz'
+  prompt: |
+    Design a short quiz on the given topic, including questions and possible answers.
+
+- category: 'meta'
+  slug: 'output-as-a-story'
+  title: 'Output as a Story'
+  prompt: |
+    Narrate the information as a brief story.
+
+- category: 'meta'
+  slug: 'organize-as-a-decision-tree'
+  title: 'Organize as a Decision Tree'
+  prompt: |
+    Create a decision tree based on the given information or scenario.
+
+- category: 'meta'
+  slug: 'describe-as-an-algorithm'
+  title: 'Describe as an Algorithm'
+  prompt: |
+    Write a high-level description of an algorithm to solve the given problem.
+
+- category: 'meta'
+  slug: 'output-as-a-letter-or-email'
+  title: 'Output as a Letter or Email'
+  prompt: |
+    Write a letter or email addressing the issue or information presented in the prompt.
+
+- category: 'meta'
+  slug: 'output-as-a-diagram'
+  title: 'Output as a Diagram'
+  prompt: |
+    Describe how the information would be represented in a visual diagram.
+
+- category: 'meta'
+  slug: 'answer-as-a-parable'
+  title: 'Answer as a Parable'
+  prompt: |
+    Share a parable that illustrates the main concept or lesson in the prompt.
+
+- category: 'meta'
+  slug: 'convert-to-an-acronym'
+  title: 'Convert to an Acronym'
+  prompt: |
+    Create an acronym using the given words or concepts.
+
+- category: 'meta'
+  slug: 'present-as-a-debate'
+  title: 'Present as a Debate'
+  prompt: |
+    Write a short dialogue presenting both sides of an argument on the given topic.
+
+- category: 'meta'
+  slug: 'explain-using-analogies'
+  title: 'Explain Using Analogies'
+  prompt: |
+    Use analogies to explain complex concepts or ideas.
+
+- category: 'meta'
+  slug: 'output-as-a-mind-palace'
+  title: 'Output as a Mind Palace'
+  prompt: |
+    Describe how the information could be organized within a mental "mind palace" for easy recall.
+
+- category: 'meta'
+  slug: 'answer-using-prospective-hindsight'
+  title: 'Answer Using Prospective Hindsight'
+  prompt: |
+    Imagine you are looking back on the situation from a future perspective. What insights or advice would you give based on that viewpoint?
