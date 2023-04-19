@@ -1,5 +1,5 @@
 <script>
-	import { themeStorageKey, darkThemeClass } from '@src/constants'
+	import { themeStorageKey, darkThemeClass } from '@src/constants.ts'
 
 	function toggleTheme() {
 		const themeValue = (() => {
@@ -27,6 +27,7 @@
 	class="absolute top-6 right-8 dark:text-gray-200 w-[40px] h-[40px]"
 	on:click|preventDefault|stopPropagation={() => toggleTheme()}
 >
+	<!-- src: https://icones.js.org/collection/ph -->
 	<svg
 		xmlns="http://www.w3.org/2000/svg"
 		viewBox="0 0 256 256"

@@ -5,7 +5,7 @@ const promptCollection = defineCollection({
 		source: z.string().optional(),
 		// dateAdded: z.string().datetime(),
 		dateAdded: z.string(),
-		intendedFor: z.string(),
+		category: z.string(),
 		title: z.string(),
 		prompt: z.string(),
 	}),

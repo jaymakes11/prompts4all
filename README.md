@@ -7,3 +7,5 @@
 - [ ] Add contribution guidelines
 - [ ] Add contribution templates
 - [ ] Add tags
+- [ ] Add ability to favorite/upvote
+- [ ] Add "tips" collection

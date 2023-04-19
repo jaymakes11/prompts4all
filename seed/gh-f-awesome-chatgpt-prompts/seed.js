@@ -31,7 +31,7 @@ async function csvToMarkdown(csvFilePath, markdownDir) {
 					const frontMatter = `---
 source: "https://github.com/f/awesome-chatgpt-prompts"
 dateAdded: "${now}"
-intendedFor: "ChatGPT"
+category: "role-definition"
 title: "Act as ${aOrAn(result.act)} ${result.act.toLowerCase()}"
 prompt: |
   ${result.prompt}
