@@ -169,24 +169,13 @@
 			</div>
 			<div>
 				<h3>Do you sell my email?</h3>
-				<p>
-					No. Never. Absolutely not. We abhor this type of stuff and genuinly want the internet to be a better
-					place so would never even consider doing something like this.
-				</p>
+				<p>No. Never. Absolutely not. We abhor such practices. We want the internet to be a better place.</p>
 			</div>
 			<div>
 				<h3>What data do you collect?</h3>
 				<p>
-					When you create an account the only personal data we store on you is your email address. For features
-					that require accounts (such as upvoting or bookmarking a prompt) we only store data needed for the
-					feature to work.
-				</p>
-			</div>
-			<div>
-				<h3>Is my password safe?</h3>
-				<p>
-					Yes. Actually, this is a trick question. The signin method does not use a password (it uses a code
-					sent to your email address) so there are no passwords to worry about.
+					When you create an account the only personal data we store is your email address. For features that
+					require accounts (such as liking prompts) we only store data needed for the feature to work.
 				</p>
 			</div>
 		</section>
