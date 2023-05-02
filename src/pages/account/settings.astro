@@ -1,0 +1,13 @@
+---
+import Root from '@layouts/Root.astro'
+import AccountSettings from '@components/AccountSettings.svelte'
+---
+
+<Root
+	classes="max-w-[1200px] mx-auto"
+	title="Account"
+	description="The place to find your bookmarked prompts and more."
+	includeEmailSignup={false}
+>
+	<AccountSettings client:only />
+</Root>

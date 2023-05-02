@@ -1,5 +1,18 @@
-export const themeStorageKey = 'prompts4all-theme'
+export const themeStorageKey = 'prompts4all_theme'
+export const isUserStorageKey = 'prompts4all_isUser'
+export const userSessionStorageKey = 'prompts4all_user'
 export const darkThemeClass = 'dark'
+export const kvKeyPrefix = {
+	// The key here should be the binding name
+	Users: 'user_',
+	AuthCodesByUserId: 'authCodeUserId_',
+	UserIdsByEmail: 'userIdByEmail_',
+	AuthSessionsByUserId: 'authSessionByUserId_',
+	Prompts: 'prompt_',
+}
+export const promptReactionTypes = {
+	like: 'like',
+}
 export const categories = [
 	{
 		slug: 'role-definition',

@@ -4,6 +4,7 @@ import Root from '@layouts/Root.astro'
 import { getCollection } from 'astro:content'
 import { mdToHtml } from '@src/utils.ts'
 import CopyBtn from '@components/CopyBtn.svelte'
+import ReactionUi from '@components/ReactionUi.svelte'
 import { categories } from '@src/constants.ts'
 
 export async function getStaticPaths() {
@@ -19,7 +20,6 @@ const category = categories.find((i) => i.slug === prompt.data.category)
 ---
 
 <Root
-	classes="px-3 sm:px-6"
 	title={`A ${category?.label.toLowerCase()} prompt: ${prompt.data.title}`}
 	description={`View this ${category?.label.toLowerCase()} prompt. Explore more prompts from our 100% free and growing collection of AI prompts.`}
 >
@@ -33,29 +33,42 @@ const category = categories.find((i) => i.slug === prompt.data.category)
 		</a>
 	</div>
 	<div class="max-w-[700px] mx-auto w-full">
-		<div class="bg-gray-100/70 dark:bg-gray-800 p-6 mb-3">
-			<div class="prose prose-xl dark:prose-invert">
-				<Fragment set:html={mdToHtml(prompt.data.prompt)} />
+		<!-- Negative left margin here to effectively center the content container, accounting for the sticky button UI -->
+		<div class="flex lg:ml-[-52px]">
+			<div class="flex flex-col">
+				<div class="sticky top-3 mr-3">
+					<ReactionUi
+						client:load
+						promptId={prompt.data.id}
+					/>
+				</div>
 			</div>
-		</div>
-		<div class="flex justify-between">
-			{
-				prompt.data.source && (
-					<div class="text-sm">
-						<a
-							class="defaultTextLink dark:text-gray-200"
-							href={prompt.data.source}
-						>
-							Source
-						</a>
+			<div class="w-full">
+				<div class="bg-gray-100/70 dark:bg-gray-800 p-6 mb-3 relative">
+					<div class="prose prose-xl dark:prose-invert">
+						<Fragment set:html={mdToHtml(prompt.data.prompt)} />
 					</div>
-				)
-			}
-			<CopyBtn
-				client:load
-				text={prompt.data.prompt}
-				classes="ml-auto px-6 py-2 rounded bg-blue-200 hover:bg-blue-300 dark:text-gray-300 dark:bg-blue-700 dark:focus:ring-0 dark:focus:outline-none dark:hover:bg-blue-600 dark:focus:bg-blue-600"
-			/>
+				</div>
+				<div class="flex justify-between">
+					{
+						prompt.data.source && (
+							<div class="text-sm">
+								<a
+									class="defaultTextLink dark:text-gray-200"
+									href={prompt.data.source}
+								>
+									Source
+								</a>
+							</div>
+						)
+					}
+					<CopyBtn
+						client:load
+						text={prompt.data.prompt}
+						classes="ml-auto px-6 py-2 rounded bg-blue-200 hover:bg-blue-300 dark:text-gray-300 dark:bg-blue-700 dark:focus:ring-0 dark:focus:outline-none dark:hover:bg-blue-600 dark:focus:bg-blue-600"
+					/>
+				</div>
+			</div>
 		</div>
 	</div>
 </Root>

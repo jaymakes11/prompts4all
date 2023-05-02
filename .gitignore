@@ -25,3 +25,6 @@ pnpm-debug.log*
 functions/\[\[path\]\].js
 
 .wrangler
+
+# Not sure if all the data here is safe to expose so keeping it out of Git for now
+wrangler.toml

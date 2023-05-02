@@ -1,0 +1,15 @@
+---
+import Root from '@layouts/Root.astro'
+import Auth from '@components/Auth.svelte'
+import AccountIndex from '@components/AccountIndex.svelte'
+---
+
+<Root
+	classes="max-w-[1200px] mx-auto min-h-[300px]"
+	title="Account"
+	description="The place to find your bookmarked prompts and more."
+	includeEmailSignup={false}
+>
+	<Auth client:only />
+	<AccountIndex client:only />
+</Root>

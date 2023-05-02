@@ -3,22 +3,29 @@ export interface Props {
 	title?: string
 	description?: string
 	classes?: string
+	includeEmailSignup?: boolean
 }
 
-const { title, description = 'A 100% free and growing collection of AI prompts.', classes = '' } = Astro.props
+const {
+	title,
+	description = 'A 100% free and growing collection of AI prompts.',
+	classes = '',
+	includeEmailSignup = true,
+} = Astro.props
 
 import '@styles/tailwind.css'
 
 import ColorThemeToggle from '@components/ColorThemeToggle.svelte'
-import { themeStorageKey, darkThemeClass } from '@src/constants.ts'
-import EmailSignupForm from '@components/EmailSignupForm.svelte'
+import AccountLink from '@components/AccountLink.svelte'
+import { themeStorageKey, darkThemeClass, userSessionStorageKey, isUserStorageKey } from '@src/constants.ts'
+import AccountSignupCallout from '@components/AccountSignupCallout.svelte'
 ---
 
 <!DOCTYPE html>
 <html lang="en">
 	<!-- prettier-ignore -->
 	<head>
-		<script is:inline define:vars={{themeStorageKey, darkThemeClass}}>
+		<script is:inline define:vars={{themeStorageKey, darkThemeClass, isUserStorageKey, userSessionStorageKey}}>
 			!(function () {
 				const themeValue = (() => {
 					if (localStorage && localStorage.getItem(themeStorageKey)) {
@@ -36,6 +43,21 @@ import EmailSignupForm from '@components/EmailSignupForm.svelte'
 					document.documentElement.classList.add(darkThemeClass)
 				}
 				window.localStorage.setItem(themeStorageKey, themeValue)
+
+				/* 
+				If user and sessionStorage has not been set, fetch data and store in sessionStorage to prevent needing to refetch this on each navigation
+				*/
+
+				if (window.localStorage.getItem(isUserStorageKey) && !window.sessionStorage.getItem(userSessionStorageKey)) {
+					fetch(`/api/user`, {
+						method: 'GET',
+					}).then(async (resp) => {
+						if (resp.ok) {
+							const data = await resp.json()
+							window.sessionStorage.setItem(userSessionStorageKey, JSON.stringify(data))
+						} 
+					})
+				}
 			})()
 		</script>
 		<meta charset="utf-8" />
@@ -50,7 +72,8 @@ import EmailSignupForm from '@components/EmailSignupForm.svelte'
 		<link rel="manifest" href="/site.webmanifest" />
 		<script defer data-domain="prompts4all.com" data-api="/pb-jam/all-the-pb/event" src="/pb-jam/all-the-pb/script.js" ></script>
 	</head>
-	<body class="bg-white dark:bg-gray-900">
+	<body class="bg-white dark:bg-gray-900 px-3 sm:px-6">
+		<AccountLink client:load />
 		<ColorThemeToggle client:load />
 		<header>
 			<div class="text-center mb-16 mt-12">
@@ -68,9 +91,7 @@ import EmailSignupForm from '@components/EmailSignupForm.svelte'
 			<slot />
 		</div>
 		<footer class="pt-32 max-w-[1200px] mx-auto">
-			<section class="dashedTopBg py-32">
-				<EmailSignupForm client:only />
-			</section>
+			{includeEmailSignup && <AccountSignupCallout client:only />}
 			<section class="dashedTopBg py-32">
 				<div class="text-center mb-6">
 					<a

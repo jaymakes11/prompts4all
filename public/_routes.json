@@ -2,7 +2,8 @@
   "version": 1,
   "include": [
     "/api/*",
-    "/pb-jam/*"
+    "/pb-jam/*",
+    "/account/*"
   ],
   "exclude": [
     "/index.html",

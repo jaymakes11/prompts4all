@@ -1,12 +1,12 @@
+import * as utils from '../_utils'
+
 export async function onRequestPost({ request, env }) {
 	try {
 		const { searchParams } = new URL(request.url)
 		const email = searchParams.get('email')
 
 		if (!email) {
-			return new Response('no email passed!', {
-				status: 422,
-			})
+			return utils.returnErrorIfMissingRequiredParams()
 		}
 
 		const refererHeader = request.headers.get('Referer')
@@ -42,9 +42,6 @@ export async function onRequestPost({ request, env }) {
 			},
 		)
 	} catch (error) {
-		console.log(error)
-		return new Response(JSON.stringify(error), {
-			status: 500,
-		})
+		utils.returnError(500, error)
 	}
 }
