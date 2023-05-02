@@ -1,5 +1,6 @@
 <script>
 	import { isUserStorageKey } from '@src/constants'
+	import { onMount } from 'svelte'
 	const isUser = window && window.localStorage.getItem(isUserStorageKey)
 
 	let emailInput
@@ -8,6 +9,19 @@
 	let showErrorMessage
 	let showStep2
 	let email
+	let sendPlausibleEvent
+
+	onMount(() => {
+		window.plausible =
+			window.plausible ||
+			function () {
+				;(window.plausible.q = window.plausible.q || []).push(arguments)
+			}
+
+		sendPlausibleEvent = function (eventName) {
+			window.plausible(eventName)
+		}
+	})
 
 	function handleSubmitForStep1() {
 		email = emailInput && emailInput.trim()
@@ -29,6 +43,7 @@
 			if (!resp.ok) {
 				showErrorMessage = true
 			} else {
+				sendPlausibleEvent('Auth Step Alpha')
 				showStep2 = true
 			}
 		})
@@ -47,6 +62,7 @@
 			if (!resp.ok) {
 				showErrorMessage = true
 			} else {
+				sendPlausibleEvent('Auth Step Omega')
 				window && window.localStorage.setItem(isUserStorageKey, 'true')
 				window.location.reload()
 				isLoading = false

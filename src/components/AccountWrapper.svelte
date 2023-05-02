@@ -13,6 +13,7 @@
 
 			if (!isUser) {
 				isInitComplete = true
+				return
 			}
 
 			// Ensure that the sessionStorage user entry has been set. It's possible that this has already been done via
