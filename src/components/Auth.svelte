@@ -16,6 +16,11 @@
 
 		isLoading = true
 
+		// Ensure the email input is not focused
+		if (document.activeElement && document.activeElement.blur) {
+			document.activeElement.blur()
+		}
+
 		return fetch(`/api/auth-alpha?email=${email}`, {
 			method: 'POST',
 		}).then((resp) => {
@@ -39,16 +44,12 @@
 		return fetch(`/api/auth-omega?code=${code}&email=${email}`, {
 			method: 'POST',
 		}).then((resp) => {
-			isLoading = false
-
 			if (!resp.ok) {
 				showErrorMessage = true
 			} else {
 				window && window.localStorage.setItem(isUserStorageKey, 'true')
-
-				window.setTimeout(() => {
-					window.location.reload()
-				}, 100)
+				window.location.reload()
+				isLoading = false
 			}
 		})
 	}

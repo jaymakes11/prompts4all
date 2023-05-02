@@ -6,7 +6,7 @@
 	class="absolute top-[28px] right-[90px] dark:text-gray-200 w-[33px] h-[33px]"
 	href="/account/"
 >
-	<AccountLinkDot client:only />
+	<AccountLinkDot />
 	<!-- src: https://icones.js.org/collection/ph -->
 	<svg
 		xmlns="http://www.w3.org/2000/svg"
