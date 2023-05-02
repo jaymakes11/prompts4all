@@ -14,7 +14,7 @@
 			const userSrc = window && window.sessionStorage.getItem(userSessionStorageKey)
 			if (!userSrc) return
 			const user = JSON.parse(userSrc)
-			hasUserMadeReaction = user?.reactions[reactionType]?.includes(promptId)
+			hasUserMadeReaction = user?.reactions?.[reactionType]?.includes(promptId)
 		}
 
 		handleClick = function (reactionType) {
@@ -74,8 +74,8 @@
 			></svg
 		>
 		<div class="text-center font-mono text-sm dark:text-gray-300 text-gray-500 mt-1.5">
-			{#if promptReactionTypes && reactions && reactions[promptReactionTypes.like] >= 0}
-				{reactions[promptReactionTypes.like]}
+			{#if promptReactionTypes && reactions?.[promptReactionTypes.like] >= 0}
+				{reactions?.[promptReactionTypes.like]}
 			{:else if isInitComplete}
 				0
 			{/if}

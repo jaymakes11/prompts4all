@@ -15,12 +15,11 @@
 			const userDataString = window && window.sessionStorage.getItem(userSessionStorageKey)
 			user = JSON.parse(userDataString)
 
-			if (user?.reactions[promptReactionTypes.like]?.length) {
+			if (user?.reactions?.[promptReactionTypes.like]?.length) {
 				const prompts = await loadPrompts()
-				usersLikedPrompts = user.reactions[promptReactionTypes.like].map((promptId) => {
+				usersLikedPrompts = user.reactions?.[promptReactionTypes.like].map((promptId) => {
 					return prompts.find((prompt) => prompt.data.id === promptId)
 				})
-				console.log(usersLikedPrompts)
 			}
 		}
 
@@ -58,7 +57,7 @@
 				{/each}
 			{:else}
 				<div class="prose prose-sm max-w-[700px] dark:prose-invert bg-gray-100/70 dark:bg-gray-800 p-4 mb-12">
-					<p>You haven't liked any prompts yet!</p>
+					<p>You have not yet liked any prompts!</p>
 				</div>
 			{/if}
 		</div>

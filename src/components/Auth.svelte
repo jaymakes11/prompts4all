@@ -46,11 +46,9 @@
 			} else {
 				window && window.localStorage.setItem(isUserStorageKey, 'true')
 
-				if (window.location.pathname === '/account/') {
-					window.location.replace('/account/')
-				} else {
-					window.location.href = '/account/'
-				}
+				window.setTimeout(() => {
+					window.location.reload()
+				}, 100)
 			}
 		})
 	}
