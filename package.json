@@ -4,7 +4,7 @@
 	"version": "0.0.1",
 	"scripts": {
 		"_esbuild:functions": "esbuild functions/[[path]].js functions/api/*.js functions/pb-jam/*.js --outdir=dist/functions --minify",
-		"apiDevelop": "wrangler pages dev . --port=3001 --persist --local --compatibility-date=2023-04-19 --env=dev",
+		"apiDevelop": "wrangler pages dev . --port=3001 --persist --local --compatibility-date=2023-04-19 --kv=AuthCodesByUserId --kv=AuthSessionsByUserId --kv=UserIdsByEmail --kv=Users --kv=Prompts",
 		"develop": "astro dev",
 		"astroBuild": "astro build",
 		"build": "npm-run-all --serial astroBuild _esbuild:functions",
