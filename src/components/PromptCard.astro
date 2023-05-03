@@ -1,0 +1,22 @@
+---
+const { prompt } = Astro.props
+import { safeTruncate } from '@src/utils.ts'
+import ReactionDisplayForCard from '@components/ReactionDisplayForCard.svelte'
+---
+
+<a
+	href={`/prompt/${prompt.slug}/`}
+	class="bg-gray-100/70 dark:bg-gray-800 p-6 hover:ring-1 hover:ring-blue-500 dark:hover:ring-blue-300 flex flex-col justify-between"
+	rel="prefetch"
+>
+	<div class="prose dark:prose-invert">
+		<h3 class="leading-tight">{prompt.data.title}</h3>
+		<div>{safeTruncate(prompt.data.prompt, 160)}</div>
+	</div>
+	<div class="mt-6">
+		<ReactionDisplayForCard
+			promptId={prompt.data.id}
+			client:visible
+		/>
+	</div>
+</a>

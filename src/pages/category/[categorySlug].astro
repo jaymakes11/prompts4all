@@ -1,8 +1,8 @@
 ---
 export const prerender = true
 import Root from '@layouts/Root.astro'
+import PromptCard from '@components/PromptCard.astro'
 import { getCollection } from 'astro:content'
-import { safeTruncate } from '@src/utils.ts'
 import { categories } from '@src/constants.ts'
 
 export async function getStaticPaths() {
@@ -37,20 +37,7 @@ const promptsInCategory = prompts.filter((prompt) => {
 	</div>
 	<div class="max-w-[1200px] mx-auto">
 		<div class="grid gap-6 grid-cols-[repeat(auto-fill,minmax(300px,2fr))]">
-			{
-				promptsInCategory.map((prompt) => (
-					<a
-						href={`/prompt/${prompt.slug}/`}
-						class="bg-gray-100/70 dark:bg-gray-800 p-6 hover:ring-1 hover:ring-blue-500 dark:hover:ring-blue-300"
-						rel="prefetch"
-					>
-						<div class="prose dark:prose-invert">
-							<h3 class="leading-tight">{prompt.data.title}</h3>
-							<div>{safeTruncate(prompt.data.prompt, 160)}</div>
-						</div>
-					</a>
-				))
-			}
+			{promptsInCategory.map((prompt) => <PromptCard prompt={prompt} />)}
 		</div>
 	</div>
 </Root>
