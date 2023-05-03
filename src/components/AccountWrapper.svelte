@@ -39,7 +39,7 @@
 </script>
 
 {#if !isInitComplete}
-	<div class="max-w-6xl w-full min-h-[300px] my-auto relative">
+	<div class="max-w-6xl w-full min-h-[300px] mx-auto relative">
 		<div
 			class="absolute flex inset-0 bg-white/80 dark:bg-gray-900/80 dark:text-gray-300 flex-col justify-center"
 		>
