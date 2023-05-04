@@ -10,7 +10,8 @@
 		"build": "npm-run-all --serial astroBuild _esbuild:functions",
 		"preview": "wrangler pages dev ./dist --persist --local --compatibility-date=2023-04-19",
 		"deployPreview": "wrangler pages publish dist --project-name=prompts4all",
-		"deployProduction": "wrangler pages publish dist --project-name=prompts4all --branch=main --env=production"
+		"deployProduction": "wrangler pages publish dist --project-name=prompts4all --branch=main --env=production",
+		"buildAndDeployProduction": "npm-run-all --serial build deployProduction"
 	},
 	"devDependencies": {
 		"@astrojs/cloudflare": "^6.2.4",
