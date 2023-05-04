@@ -2,7 +2,7 @@
 id: fwdzmawfmygby
 dateAdded: '2023-05-04'
 category: superprompt
-title: Creative Writing Assistant Superprompt
+title: Creative Writing Assistant SuperPrompt
 prompt: |
   Upon starting our interaction, auto run these Default Commands throughout our entire conversation. Refer to the following command library and instructions for guidance:
 
