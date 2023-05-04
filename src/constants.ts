@@ -1,6 +1,7 @@
 export const themeStorageKey = 'prompts4all_theme'
 export const isUserStorageKey = 'prompts4all_isUser'
 export const userSessionStorageKey = 'prompts4all_user'
+export const sessionPromptEntryCachePrefix = 'prompts4all_promptEntry_' // one entry per prompt entry, prompt id must appended
 export const darkThemeClass = 'dark'
 export const kvKeyPrefix = {
 	// The key here should be the binding name

@@ -1,6 +1,11 @@
 <script>
 	export let promptId
-	import { isUserStorageKey, promptReactionTypes, userSessionStorageKey } from '@src/constants'
+	import {
+		isUserStorageKey,
+		promptReactionTypes,
+		userSessionStorageKey,
+		sessionPromptEntryCachePrefix,
+	} from '@src/constants'
 	import { onMount } from 'svelte'
 	import * as utils from '@src/utils'
 
@@ -31,6 +36,9 @@
 						// Update the user's session store
 						window.sessionStorage.setItem(userSessionStorageKey, JSON.stringify(user))
 
+						// Update the sessionStorage promptEntry cache
+						window.sessionStorage.setItem(sessionPromptEntryCachePrefix + promptId, JSON.stringify(prompt))
+
 						// Update local state
 						setHasUserMadeReaction(promptReactionTypes.like)
 						reactions = prompt.metadata.reactions
@@ -40,9 +48,20 @@
 
 		async function init() {
 			setHasUserMadeReaction(promptReactionTypes.like)
-			await utils.getPromptWithMetadata(promptId).then((prompt) => {
-				reactions = prompt?.metadata?.reactions
-			})
+
+			// TODO: This code is repeated in ReactionDisplayForCard... consider abstracting.
+
+			const maybeCachedEntry = window.sessionStorage.getItem(sessionPromptEntryCachePrefix + promptId)
+			if (maybeCachedEntry) {
+				const cacheEntry = JSON.parse(maybeCachedEntry)
+				reactions = cacheEntry?.metadata?.reactions
+			} else {
+				await utils.getPromptWithMetadata(promptId).then((prompt) => {
+					reactions = prompt?.metadata?.reactions
+					window.sessionStorage.setItem(sessionPromptEntryCachePrefix + promptId, JSON.stringify(prompt))
+				})
+			}
+
 			isInitComplete = true
 		}
 

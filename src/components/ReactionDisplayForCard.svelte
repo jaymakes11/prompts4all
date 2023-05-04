@@ -1,6 +1,6 @@
 <script>
 	export let promptId
-	import { promptReactionTypes } from '@src/constants'
+	import { promptReactionTypes, sessionPromptEntryCachePrefix } from '@src/constants'
 	import { onMount } from 'svelte'
 	import * as utils from '@src/utils'
 
@@ -9,9 +9,17 @@
 
 	onMount(() => {
 		async function init() {
-			await utils.getPromptWithMetadata(promptId).then((prompt) => {
-				reactions = prompt?.metadata?.reactions
-			})
+			const maybeCachedEntry = window.sessionStorage.getItem(sessionPromptEntryCachePrefix + promptId)
+			if (maybeCachedEntry) {
+				const cacheEntry = JSON.parse(maybeCachedEntry)
+				reactions = cacheEntry?.metadata?.reactions
+			} else {
+				await utils.getPromptWithMetadata(promptId).then((prompt) => {
+					reactions = prompt?.metadata?.reactions
+					window.sessionStorage.setItem(sessionPromptEntryCachePrefix + promptId, JSON.stringify(prompt))
+				})
+			}
+
 			isInitComplete = true
 		}
 
