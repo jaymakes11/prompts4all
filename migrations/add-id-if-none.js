@@ -31,7 +31,7 @@ function addIdToFrontMatter(file) {
 
 	const id = nanoid()
 	const updatedFrontMatter = { id, ...parsedContent.data }
-	const updatedYaml = yaml.dump(updatedFrontMatter)
+	const updatedYaml = yaml.dump(updatedFrontMatter, { lineWidth: -1, noCompatMode: true })
 	const updatedFileContent = `---\n${updatedYaml}---\n${parsedContent.content}`
 
 	fs.writeFileSync(file, updatedFileContent, 'utf8')
