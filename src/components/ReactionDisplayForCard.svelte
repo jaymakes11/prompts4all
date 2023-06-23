@@ -10,7 +10,7 @@
 	onMount(() => {
 		async function init() {
 			const maybeCachedEntry = window.sessionStorage.getItem(sessionPromptEntryCachePrefix + promptId)
-			if (maybeCachedEntry) {
+			if (maybeCachedEntry && maybeCachedEntry !== 'undefined') {
 				const cacheEntry = JSON.parse(maybeCachedEntry)
 				reactions = cacheEntry?.metadata?.reactions
 			} else {

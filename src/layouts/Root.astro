@@ -73,18 +73,18 @@ import AccountSignupCallout from '@components/AccountSignupCallout.svelte'
 		<script defer data-domain="prompts4all.com" data-api="/pb-jam/all-the-pb/event" src="/pb-jam/all-the-pb/script.js" ></script>
 	</head>
 	<body class="bg-white dark:bg-gray-900 px-3 sm:px-6">
-		<AccountLink client:load />
-		<ColorThemeToggle client:load />
-		<header>
-			<div class="text-center mb-16 mt-12">
-				<a
-					href="/"
-					class="font-mono text-2xl text-gray-600 hover:text-gray-950 dark:text-gray-200 dark:hover:text-white inline-flex justify-center"
-				>
-					<span>&lcub;</span>
-					<span class="mx-1.5">Prompts4All</span>
-					<span>&rcub;</span>
-				</a>
+		<header class="flex justify-between max-w-[1200px] w-full mx-auto mb-16 mt-12">
+			<a
+				href="/"
+				class="font-mono text-2xl text-gray-600 hover:text-gray-950 dark:text-gray-200 dark:hover:text-white inline-flex justify-center"
+			>
+				<span>&lcub;</span>
+				<span class="px-1.5">Prompts4All</span>
+				<span>&rcub;</span>
+			</a>
+			<div class="flex">
+				<AccountLink client:load />
+				<ColorThemeToggle client:load />
 			</div>
 		</header>
 		<div class={classes}>

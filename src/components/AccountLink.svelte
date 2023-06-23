@@ -3,7 +3,7 @@
 </script>
 
 <a
-	class="absolute top-[28px] right-[90px] dark:text-gray-200 w-[33px] h-[33px]"
+	class="dark:text-gray-200 w-[33px] h-[33px] mr-3 relative"
 	href="/account/"
 >
 	<AccountLinkDot />

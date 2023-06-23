@@ -24,7 +24,7 @@
 </script>
 
 <button
-	class="absolute top-6 right-8 dark:text-gray-200 w-[40px] h-[40px]"
+	class="dark:text-gray-200 w-[40px] h-[40px] -mt-0.5 ml-3"
 	on:click|preventDefault|stopPropagation={() => toggleTheme()}
 >
 	<!-- src: https://icones.js.org/collection/ph -->

@@ -1,4 +1,8 @@
 import { marked } from 'marked'
+import { mangle } from 'marked-mangle'
+import { gfmHeadingId } from 'marked-gfm-heading-id'
+
+marked.use(mangle(), gfmHeadingId())
 
 export function wrapLinesInPTags(text: String) {
 	const lines = text.trim().split('\n')

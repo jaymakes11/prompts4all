@@ -7,7 +7,7 @@ export async function onRequestGet({ request, env }) {
 		const userResp = await env.Users.get(kvKeyPrefix.Users + userId)
 
 		if (!userResp) {
-			return utils.returnError(400, { message: 'No user found' })
+			return utils.returnError(404, { message: 'No user found' })
 		}
 
 		return new Response(userResp, {
