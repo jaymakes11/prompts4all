@@ -2,6 +2,10 @@
 	"name": "prompts4all",
 	"type": "module",
 	"version": "0.0.1",
+	"engines": {
+		"node": "18",
+		"npm": "9"
+	},
 	"scripts": {
 		"_esbuild:functions": "esbuild functions/[[path]].js functions/api/*.js functions/pb-jam/*.js --outdir=dist/functions --minify",
 		"apiDevelop": "wrangler pages dev . --port=3001 --compatibility-date=2023-04-19 --kv=AuthCodesByUserId --kv=AuthSessionsByUserId --kv=UserIdsByEmail --kv=Users --kv=Prompts",
@@ -10,29 +14,29 @@
 		"build": "npm-run-all --serial astroBuild _esbuild:functions",
 		"preview": "wrangler pages dev ./dist --remote --compatibility-date=2023-04-19",
 		"deployPreview": "wrangler pages publish dist --project-name=prompts4all",
-		"deployProduction": "wrangler pages publish dist --project-name=prompts4all --branch=main --env=production",
+		"deployProduction": "wrangler pages deploy dist --project-name=prompts4all --branch=main --env=production",
 		"buildAndDeployProduction": "npm-run-all --serial build deployProduction"
 	},
 	"devDependencies": {
-		"@astrojs/cloudflare": "^6.3.0",
-		"@astrojs/prefetch": "^0.2.3",
-		"@astrojs/sitemap": "^1.3.1",
-		"@astrojs/svelte": "^2.2.0",
-		"@astrojs/tailwind": "^3.1.3",
+		"@astrojs/cloudflare": "^6.6.2",
+		"@astrojs/prefetch": "^0.3.0",
+		"@astrojs/sitemap": "^2.0.1",
+		"@astrojs/svelte": "^3.1.0",
+		"@astrojs/tailwind": "^4.0.0",
 		"@tailwindcss/typography": "^0.5.9",
-		"astro": "^2.5.5",
-		"astro-compress": "^1.1.44",
+		"astro": "^2.9.3",
+		"astro-compress": "^1.1.49",
 		"cookie": "^0.5.0",
 		"csv-parser": "^3.0.0",
-		"esbuild": "^0.17.19",
+		"esbuild": "^0.18.17",
 		"gray-matter": "^4.0.3",
 		"js-yaml": "^4.1.0",
-		"marked": "^5.0.2",
-		"marked-gfm-heading-id": "^3.0.3",
-		"marked-mangle": "^1.0.1",
+		"marked": "^5.1.2",
+		"marked-gfm-heading-id": "^3.0.4",
+		"marked-mangle": "^1.1.0",
 		"nanoid": "^4.0.2",
 		"npm-run-all": "^4.1.5",
 		"slugify": "^1.6.6",
-		"wrangler": "^3.0.1"
+		"wrangler": "^3.3.0"
 	}
 }
