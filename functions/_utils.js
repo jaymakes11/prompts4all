@@ -14,7 +14,7 @@ export const getAuthSessionCookieOr404 = (request) => {
 
 export const isLocal = (request) => {
 	const { href } = new URL(request.url)
-	return href.includes('http://127.0.0.1:3001')
+	return href.includes('http://127.0.0.1:4321')
 }
 
 export function returnError(code, errorMessage = '') {
